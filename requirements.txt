@@ -1,0 +1,4 @@
+jmetalpy
+RDKit
+pandas
+numpy
