@@ -138,12 +138,12 @@ class EA(AbstractEA):
     :param max_generations: (int) The number of iterations of the EA (stopping criteria).
     """
 
-    def __init__(self, problem, max_generations=MAX_GENERATIONS, mp=True, algorithm=None, **kwargs):
+    def __init__(self, problem, max_generations=MAX_GENERATIONS, mp=False, algorithm=None, **kwargs):
 
         super(EA, self).__init__(problem, max_generations=max_generations, mp=mp, **kwargs)
 
         self.algorithm_name = algorithm
-        self.crossover, self.mutation = build_operators(self.problem)
+        self.crossover, self.mutation = build_operators()
         self.max_evaluations = self.max_generations * self.problem.population_size
 
     def get_population_size(self):

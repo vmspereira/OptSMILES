@@ -2,3 +2,5 @@ jmetalpy
 RDKit
 pandas
 numpy
+sklearn
+xgboost

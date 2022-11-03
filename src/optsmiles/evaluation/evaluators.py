@@ -57,19 +57,6 @@ class EvaluationFunction:
         return self.get_fitness(candidate, batched)
 
 
-class DummiEvalFunction(EvaluationFunction):
-
-    def get_fitness(self, smile):
-        """
-        candidate :  Candidate beeing evaluated
-        args: additional arguments
-        """
-        return sum(smile) / len(smile)
-
-    def method_str(self):
-        return "Dummi"
-
-
 class AggregatedSum(EvaluationFunction):
     """
     Aggredated Sum Evaluation Function 
@@ -121,7 +108,6 @@ class logP(EvaluationFunction):
 
     def _get_fitness_single(self, candidate):
         """ candidate :  Candidate beeing evaluated """
-        print(candidate)
         mol = Chem.MolFromSmiles(candidate)
 
         if mol:

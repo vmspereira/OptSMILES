@@ -7,8 +7,7 @@ from optsmiles.problems.problem import SmilesSolution, smiles_encoder, smiles_de
 from typing import List
 import os
 
-DATA_FILES = os.path.join(os.path.dirname(__file__),
-                          'reaction_libraries')
+DATA_FILES = os.path.join(os.path.dirname(__file__), 'reaction_libraries')
 
 class MutationContainer(Mutation[SmilesSolution]):
     """A container for the mutation operators.
@@ -85,11 +84,11 @@ class ClickMutation(Mutation[SmilesSolution]):
 
     def __init__(self, probability: float = 0.1):
         super(ClickMutation, self).__init__(probability=probability)
-        
+
         self.rxn_library_variables = ["all_rxns",
-                                     DATA_FILES+"/All_Rxns_rxn_library.json",
-                                     DATA_FILES+"/All_Rxns_functional_groups.json",
-                                     DATA_FILES+"/complementary_mol_dir/"]
+                                      DATA_FILES+"/all_rxns/All_Rxns_rxn_library.json",
+                                      DATA_FILES+"/all_rxns/All_Rxns_functional_groups.json",
+                                      DATA_FILES+"/all_rxns/complementary_mol_dir/"]
 
 
     def execute(self, solution: SmilesSolution) -> SmilesSolution:

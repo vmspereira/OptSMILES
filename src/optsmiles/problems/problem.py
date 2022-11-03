@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from ..evaluation.evaluators import EvaluationFunction
 
 # define SMILES characters
-SMILES_CHARS = [' ', '#', '%', '(', ')', '+', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6','7', '8', '9','=', '@','A', 'B', 'C', 'F', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P','R', 'S', 'T', 'V', 'X', 'Z','[', '\\', ']','a', 'b', 'c', 'e', 'g', 'i', 'l', 'n', 'o', 'p', 'r', 's','t', 'u']
+SMILES_CHARS = [' ', '~', '#', '%', '(', ')', '+', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6','7', '8', '9','=', '@','A', 'B', 'C', 'F', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P','R', 'S', 'T', 'V', 'X', 'Z','[', '\\', ']','a', 'b', 'c', 'e', 'g', 'i', 'l', 'n', 'o', 'p', 'r', 's','t', 'u']
 
 # define encoder and decoder
 smi2index = dict((c, i) for i, c in enumerate(SMILES_CHARS))
@@ -100,7 +100,7 @@ class SmilesSolution(Solution[int]):
 class SmilesProblem(Problem[SmilesSolution], ABC):
     """Class representing SMILES problems."""
 
-    def __init__(self, fevaluation:List[EvaluationFunction]=[], **kwargs):
+    def __init__(self, fevaluation:List["EvaluationFunction"]=[], **kwargs):
         super(SmilesProblem, self).__init__()
         self.lower_bound = 0
         self.upper_bound = len(SMILES_CHARS)-1
@@ -183,7 +183,6 @@ class SmilesProblem(Problem[SmilesSolution], ABC):
         candidate = smiles_decoder(solution.variables)
         solution.smiles = candidate
         p = self.evaluate_solution(candidate, decode=False)
-        print(p)
         for i in range(len(p)):
             # JMetalPy only deals with minimization problems
             if self.obj_directions[i] == self.MAXIMIZE:

@@ -213,7 +213,7 @@ class SmilesClickChem(object):
         elif type(rxn_library_file) == str:
             if os.path.exists(rxn_library_file) is False:
                 raise Exception(
-                    "Custom specified rxn_library_file directory can not be found"
+                    f"Custom specified rxn_library_file directory {rxn_library_file} can not be found"
                 )
 
             if os.path.isfile(rxn_library_file) is False:
@@ -652,11 +652,11 @@ class SmilesClickChem(object):
             mol_deprotanated, mol_reprotanated
         )
         if len(list_subs_within_mol) == 0:
-            print(
-                "{} had no functional groups to react with.".format(
-                    ligand_smiles_string
-                )
-            )
+            #print(
+            #    "{} had no functional groups to react with.".format(
+            #        ligand_smiles_string
+            #    )
+            #)
             return None
 
         shuffled_reaction_list = self.rand_key_list(

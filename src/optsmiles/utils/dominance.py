@@ -3,8 +3,8 @@ from typing import Union, List, TYPE_CHECKING
 if TYPE_CHECKING:
     from ..problems.problem import SmilesSolution
 
-def dominance_test(solution1:Union[List[float],SmilesSolution],
-                   solution2:Union[List[float],SmilesSolution], 
+def dominance_test(solution1:Union[List[float],"SmilesSolution"],
+                   solution2:Union[List[float],"SmilesSolution"], 
                    maximize:bool=True) -> int:
     """
     Testes Pareto dominance
