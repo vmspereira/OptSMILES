@@ -1,2 +1,3 @@
-src/optsmiles/__pycache__/__init__.cpython-37.pyc
+__pycache
 .DS_Store
+optsmiles.egg-info
